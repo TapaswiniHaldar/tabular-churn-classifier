@@ -9,8 +9,8 @@ Customer attrition (churn) directly impacts recurring revenue in subscription-ba
 * **Dataset Dimensions:** 7,043 instances and 19 predictive features (after removing the non-predictive `customerID` identifier column), satisfying the $\ge 1,000$ instances and $\ge 12$ features criteria.
 * **Target Variable:** `Churn` (Encoded as `0` for `No` and `1` for `Yes`)
 * **Feature Types:**
-  * **Numerical Features (3):** `tenure`, `MonthlyCharges`, `TotalCharges` (plus binary numeric `SeniorCitizen`)
-  * **Categorical Features (16):** `gender`, `Partner`, `Dependents`, `PhoneService`, `MultipleLines`, `InternetService`, `OnlineSecurity`, `OnlineBackup`, `DeviceProtection`, `TechSupport`, `StreamingTV`, `StreamingMovies`, `Contract`, `PaperlessBilling`, `PaymentMethod`
+  * **Numerical Features (4):** `SeniorCitizen`, `tenure`, `MonthlyCharges`, `TotalCharges`
+  * **Categorical Features (15):** `gender`, `Partner`, `Dependents`, `PhoneService`, `MultipleLines`, `InternetService`, `OnlineSecurity`, `OnlineBackup`, `DeviceProtection`, `TechSupport`, `StreamingTV`, `StreamingMovies`, `Contract`, `PaperlessBilling`, `PaymentMethod`
 * **Missing Values & Duplicates:** Detected 11 missing values in `TotalCharges` (corresponding to brand-new customers with `tenure == 0`) and checked for duplicate records (0 exact duplicates found after dropping `customerID`).
 * **Class Distribution & Imbalance:** The target variable exhibits moderate class imbalance: **73.46% `No` (5,174 instances)** vs. **26.54% `Yes` (1,869 instances)**. Because of this ~73:27 skew, Accuracy alone can be misleading, making **ROC-AUC** and **Matthews Correlation Coefficient (MCC)** critical evaluation metrics.
 * **Data Preprocessing Pipeline:**
