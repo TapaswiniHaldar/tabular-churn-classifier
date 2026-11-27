@@ -19,3 +19,5 @@ Customer attrition (churn) directly impacts recurring revenue in subscription-ba
 
 
 <img width="1280" height="800" alt="Screenshot 2026-11-27 at 11 42 07 PM" src="https://github.com/user-attachments/assets/fd900873-867c-41ab-8fe0-d967ca8f94f1" />
+<img width="1280" height="800" alt="Screenshot 2026-11-27 at 11 42 17 PM" src="https://github.com/user-attachments/assets/8571b2cb-3af9-489c-a324-5489022863a4" />
+
