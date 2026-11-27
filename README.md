@@ -27,27 +27,3 @@ cd tabular-churn-classifier
 pip install -r requirements.txt
 jupyter notebook telco_churn_classification.ipynb
 
-
-## d. Models Used & Evaluation Results
-
-### Evaluation Metrics Comparison Table
-| ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| Logistic Regression | 0.8028 | 0.8403 | 0.6610 | 0.5242 | 0.5847 | 0.4630 |
-| Decision Tree | 0.7765 | 0.7945 | 0.5848 | 0.5376 | 0.5602 | 0.4114 |
-| kNN | 0.7609 | 0.7921 | 0.5529 | 0.5054 | 0.5281 | 0.3690 |
-| Naive Bayes | 0.6861 | 0.8092 | 0.4501 | 0.8360 | 0.5851 | 0.4132 |
-| Random Forest (Ensemble) | 0.8000 | 0.8337 | 0.6619 | 0.5000 | 0.5697 | 0.4501 |
-
-### Evaluation Metrics Visualization
-![Model Evaluation Comparison](metrics_comparison.png)
-
-### Observations on Model Performance
-| ML Model Name | Observation about model performance |
-| :--- | :--- |
-| **Logistic Regression** | Achieved the strongest overall balanced performance with the highest **Accuracy (0.8028)**, **AUC (0.8403)**, and **MCC (0.4630)**. Standardization of continuous billing features (`tenure`, `MonthlyCharges`, `TotalCharges`) and one-hot encoding allowed its linear decision boundary to separate churners cleanly without overfitting. |
-| **Decision Tree** | Delivered moderate predictive power (**Accuracy: 0.7765**, **AUC: 0.7945**, **MCC: 0.4114**). Pruning at `max_depth=8` prevented severe overfitting on the training split, yielding slightly higher Recall (`0.5376`) than Logistic Regression and Random Forest, though lower Precision (`0.5848`). |
-| **kNN** | Recorded the lowest **AUC (0.7921)** and **MCC (0.3690)** among all five classifiers. Despite `StandardScaler` normalization, distance-based neighborhood voting suffers from the curse of dimensionality introduced by one-hot encoding 15 categorical features. |
-| **Naive Bayes** | Exhibited an aggressive positive-class prediction profile, achieving the highest **Recall (0.8360)** and top **F1 Score (0.5851)**, but the lowest **Accuracy (0.6861)** and **Precision (0.4501)**. The conditional independence assumption across correlated service add-ons causes substantial false positives, though it catches over 83% of actual churners. |
-| **Random Forest (Ensemble)** | Ranked a close second overall (**Accuracy: 0.8000**, **AUC: 0.8337**, **MCC: 0.4501**) and achieved the highest **Precision (0.6619)**. Bagging 150 depth-constrained trees (`max_depth=10`) substantially reduced variance compared to the single Decision Tree, boosting MCC from `0.4114` to `0.4501`. |
-| **Overall Winner for your dataset?** | **Logistic Regression** is the overall winner for this dataset. On an imbalanced binary classification problem (~73.5% vs. 26.5%), **MCC** and **ROC-AUC** are the most reliable indicators of true discriminative skill, and Logistic Regression led on both (**MCC: 0.4630**, **AUC: 0.8403**) alongside the highest Accuracy (**0.8028**). *(Note: If the business prioritizes catching maximum churners regardless of false alarms, Naive Bayes offers superior Recall at 0.8360).* |
